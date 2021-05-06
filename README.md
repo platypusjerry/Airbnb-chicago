@@ -1,1 +1,2 @@
-# Airbnb-chicago
+# Airbnb-chicago-analysis
+Airbnb's publically available data of a large number of listings is a critical aspect for the company. This data is further cleaned and analyzed to provide various insights for the beneficiaries of the company. Various purposes include security decisions, business decisions, optimizing peer-to-peer compatibility, improving marketing and branding etc. Let us take a look into some of the visualizations that can be inferred from this dataset.
