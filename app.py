@@ -5,17 +5,6 @@ import base64
 import math
 from PIL import Image
 import xgboost as xgb
-from xgboost import plot_importance
-from sklearn.svm import LinearSVR
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
-from sklearn.model_selection import train_test_split, cross_val_score, cross_validate, KFold, RandomizedSearchCV, GridSearchCV
-from sklearn.ensemble import RandomForestRegressor 
-from sklearn.linear_model import LinearRegression, Ridge
-from sklearn.preprocessing import LabelEncoder, normalize, scale
-from sklearn.metrics import explained_variance_score, mean_squared_error, mean_absolute_error, r2_score
-from keras import models, layers, optimizers, regularizers
-from keras.utils.vis_utils import model_to_dot, plot_model
 from tensorflow.keras.models import load_model
 
 from pred import *
