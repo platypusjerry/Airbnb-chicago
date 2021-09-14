@@ -100,39 +100,39 @@ if box == "EDA":
     Since we aren't given neighbourhood groups in the dataset, let us take a look at the different unique neighbourhoods and listing concentrations around them.
     """
     st.markdown(html_7, unsafe_allow_html=True)
-    im1 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download.png')
-    im2 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (2).png')
+    im1 = Image.open('img/download.png')
+    im2 = Image.open('img/download (2).png')
     col1, col2 = st.beta_columns(2)
     with col1:
         st.image(im1, caption = "Top 10 heavily listed neighbourhoods")
     with col2:
         st.image(im2, caption = "listing density of the most listed areas")
         
-    im3 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (1).png')
+    im3 = Image.open('img/download (1).png')
     st.image(im3, caption="Top 10 hosts by number of listings")
     st.markdown("It is evident that businesses operate on a quite larger scale than homeowners. We shall see more examples of this later", unsafe_allow_html=True)
     
     st.markdown("#")
     st.header("Prices and Neighbourhoods")
-    im4 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (3).png')
+    im4 = Image.open('img/download (3).png')
     st.image(im4, caption="Top costliest neighbourhoods")
     st.markdown("Unsurprisingly, these are the main city centers in Chicago Metropolitan Area", unsafe_allow_html=True)
     
-    im5 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (4).png')
+    im5 = Image.open('img/download (4).png')
     st.image(im5, caption="Daily price heatmap across the entire region")
     
-    im6 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/newplot.png')
+    im6 = Image.open('img/newplot.png')
     st.image(im6, caption="Areas with their most popular room type")
     
     st.markdown("We should generate a clear idea with the following regarding the effect of various features on the daily prices. As well will see the correlations later, one of the main factor is the Room Type of stay", unsafe_allow_html=True)
     
-    im7 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (5).png')
+    im7 = Image.open('img/download (5).png')
     st.image(im7, caption= "Price distribution across room types and populous regions")
     
-    im8 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (6a).png')
+    im8 = Image.open('img/download (6a).png')
     st.image(im8, caption = "Price and listing features correlation {open image for viewing}", output_format='PNG')
     
-    im9 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (7).png')
+    im9 = Image.open('img/download (7).png')
     st.image(im9, caption="pricing and popularity")
     
     html_8 = """
@@ -152,14 +152,14 @@ if box == "EDA":
     
     col3, col4 = st.beta_columns(2)
     with col3:
-        im10 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (8).png')
+        im10 = Image.open('img/download (8).png')
         st.image(im10, caption="Common words in listing names")
     with col4:
-        im11 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (9).png')
+        im11 = Image.open('img/download (9).png')
         st.image(im11, caption="Common words in listing descriptions")
         
     st.markdown("Top n-grams of the 200 most popular listings")
-    im12 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (10).png')
+    im12 = Image.open('img/download (10).png')
     st.image(im12)
     
     html_9 = """
@@ -195,22 +195,22 @@ if box == "Feature Engineering":
     """
     st.markdown(html_11, unsafe_allow_html=True)
     
-    im13 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/Capture3.png')
+    im13 = Image.open('img/Capture3.png')
     st.image(im13, caption="Document Term matrix")
     st.markdown("<br>", unsafe_allow_html=True)
     
-    im14 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/Capture.png')
+    im14 = Image.open('img/Capture.png')
     st.image(im14, caption="Sparse representation dataframe")
     st.markdown("This sparse representation form will benefit us over one-hot encoding, as we wish to see each of the terms of the features weightage on the price prediction model", unsafe_allow_html=True)
     st.markdown("Apart from Amenities, the rest of the free-text features will be dropped,as well as the redundant ones after analysisng all multi-collinearities")
     
-    im15 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (11).png')
+    im15 = Image.open('img/download (11).png')
     st.image(im15, caption="Collinearity heatmap after dropping most of the redundant and extreme correlating features")
     st.markdown("We shall go ahead with these features <br>", unsafe_allow_html=True)
     
     st.markdown("When it comes to the distribution of the values of the features, bar availability_365, rest of the features are very skewed. Therefore we can log transform these to a normal distribution. We will still have features not benefitted from this due to their irregular distribution and large number of 0 values. We will standardize all later on using scikit-learn <br>", unsafe_allow_html=True)
     
-    im16 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (12).png')
+    im16 = Image.open('img/download (12).png')
     st.image(im16, caption="Correcting the skewed data distribution of the numerical features")
     
     
@@ -235,39 +235,39 @@ if box == "Model Building":
     st.markdown("""The linear regresion model, as expected performs very poorly. Being a very biased interpolator, it does not fit well on our test dataset at all, and 
                   proceeds to give high error scores""", unsafe_allow_html=True)
                  
-    im17 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/regres.png')
+    im17 = Image.open('img/regres.png')
     st.image(im17, caption = "Linear regression scores")
     st.markdown("<br>", unsafe_allow_html=True)
     
     st.markdown("<h3><b> 2. </b2></h3>", unsafe_allow_html=True)
     st.markdown("The SVM regressor behaves similary, albeit fitting on the test data set a bit better than the linear regressor. However it too ends up being a biased model to work with", unsafe_allow_html=True)
-    im18 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/SVM.png')
-    st.image(im18, caption="SVM regression score")
+    im17b = Image.open('img/SVM.png')
+    st.image(im17b, caption="SVM regression score")
     st.markdown("#")
     
     st.markdown("<h3><b> 3. </b2></h3>", unsafe_allow_html=True)
     st.markdown("An ensemble model like vanilla XGBoost, built on the functionalities of a decision tree works the best in our use case. It has an accurate validation score, and does not overfit or underfit on the given data. Let us look at an untuned XGBoost model scores", unsafe_allow_html=True)
-    im18 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/xgb.png')
+    im18 = Image.open('img/xgb.png')
     st.image(im18, caption = "XGB base model scores")
     st.markdown("#")
     
     st.markdown("Using the feature weighatages, we select the top important features to tune the hyperparameters using Gridsearch CV with a 3 fold Cross Validation. We observe an increase in the accuracy in the dest set, as well as a more suitav=ble distribution of the predicted data with accordance to the test set", unsafe_allow_html=True)
-    im19 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/xgb_tuned.png')
+    im19 = Image.open('img/xgb_tuned.png')
     st.image(im19, caption="Results after suitable tuning the hyperparameters")
     st.markdown("<br>", unsafe_allow_html=True)
     
     col5, col6 = st.beta_columns(2)
     with col5:
-        im20 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (13).png')
+        im20 = Image.open('img/download (13).png')
         st.image(im20, caption = "Prediction Plot")
     with col6:
-        im21 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (14).png')
+        im21 = Image.open('img/download (14).png')
         st.image(im21, caption= "predicted and actual values distribution")
         
     st.markdown("#")
     st.markdown("The most weighted features after fitting on the tuned model are found out: ")
     
-    im22 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (15).png')
+    im22 = Image.open('img/download (15).png')
     st.image(im22)
     
     st.markdown("#")
@@ -288,15 +288,15 @@ if box == "Model Building":
     st.markdown("We shall now observe the performance of a Neural Network with L1 regularization for the given task. We will use ReLU activation function, a linear function for the output layer and a mean sqaured loss as this is a regression task.")
     st.markdown("<br>", unsafe_allow_html=True)
     
-    im23 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/Capture2.png')
+    im23 = Image.open('img/Capture2.png')
     st.image(im23, caption = "The structure of the Keras neural network built to fit our task")
     st.markdown("<br>", unsafe_allow_html=True)
     
-    im24 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/Capture4.png')
+    im24 = Image.open('img/Capture4.png')
     st.image(im24, caption="Loss and error at the completion of run epochs" )
     st.markdown("<br>", unsafe_allow_html=True)
     
-    im25 = Image.open('C:/Users/ADI/Desktop/EDAairbnb/img/download (16).png')
+    im25 = Image.open('img/download (16).png')
     st.image(im25, caption="Predicted values vs Actual values")
     st.markdown("<br>", unsafe_allow_html=True)
     
