@@ -1,12 +1,8 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
 import base64
 import math
 from PIL import Image
-import xgboost as xgb
-from tensorflow.keras.models import load_model
-
 from pred import *
 
 
