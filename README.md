@@ -9,5 +9,10 @@ Airbnb's publically available data of a large number of listings is a critical a
 
 Let us take a look into some of the visualizations that can be inferred from this dataset. We will try to understand the features that drive certain user decisions. Doing so, we shall subsequently try to build a model that predicts the price of an Airbnb listing. We will try different methods and evaluate each, thus finding the most accurate among them all for scaling into a real-world use.
 
-You can view the solutions notebook [here](https://colab.research.google.com/drive/1AxqlqSM0mhzVcH_4FmHWof8Gsqc03vVW?usp=sharing).
-Also check the analysis dashboard adn the prediction web-app [here](https://colab.research.google.com/drive/1AxqlqSM0mhzVcH_4FmHWof8Gsqc03vVW?usp=sharing).
+You can view the solutions notebook [here](https://colab.research.google.com/drive/1AxqlqSM0mhzVcH_4FmHWof8Gsqc03vVW?usp=sharing)
+
+
+Also check the analysis dashboard and the prediction web-app [here](https://colab.research.google.com/drive/1AxqlqSM0mhzVcH_4FmHWof8Gsqc03vVW?usp=sharing)
+
+
+Dataset procured from [http://insideairbnb.com/get-the-data.html](http://insideairbnb.com/get-the-data.html)
