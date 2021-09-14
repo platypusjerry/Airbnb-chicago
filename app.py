@@ -3,6 +3,8 @@ import pandas as pd
 import base64
 import math
 from PIL import Image
+
+
 from pred import *
 
 
@@ -320,104 +322,56 @@ elif box == "Price Prediction":
     <br>
     """
     st.markdown(html_temp_3, unsafe_allow_html=True)
-    html_4 = """ <h3> Select Model </h3> """
+    html_4 = """ <h3> Enter preferences </h3> """
     st.markdown(html_4, unsafe_allow_html=True)
-    box1= st.selectbox(" ", ["XGBoost", "Neural Network"])
     
-    if box1 == "XGBoost":
-        with st.form(key='user_dat'):
-            room = st.selectbox("Room type", ["Entire Home/Apartment", "Private", "Shared", "Hotel"])
-            area = st.selectbox("Select neighbourhood", ["neighbourhood_Near North Side", "neighbourhood_Albany Park", "neighbourhood_Loop", "neighbourhood_Lincoln Park", "neighbourhood_Washington Park", 
-                                                           "neighbourhood_Lake View", "neighbourhood_Logan Square", "neighbourhood_Near West Side", "neighbourhood_East Garfield Park", "neighbourhood_South Chicago", "neighbourhood_Uptown", 
-                                                           "neighbourhood_Belmont Cragin", "neighbourhood_Oakland", "neighbourhood_Englewood", "neighbourhood_New City", "neighbourhood_Austin", "neighbourhood_Dunning"])
-            acc = st.text_input("Number of people to acommodate")
-            bedroom = st.text_input("Number of bedrooms")
-            nights = st.text_input("Number of nights stay")
-            amen = st.multiselect("Amenities required", ["gym",	"dishwasher", "kitchen", "indoor_fireplace", "iron", 
-                                                         "washer", "heating", "hair_dryer", "stove", "hot_water", "microwave", "dryer"])
+    with st.form(key='user_dat'):
+        room = st.selectbox("Room type", ["Entire Home/Apartment", "Private", "Shared", "Hotel"])
+        area = st.selectbox("Select neighbourhood", ["neighbourhood_Near North Side", "neighbourhood_Albany Park", "neighbourhood_Loop", "neighbourhood_Lincoln Park", "neighbourhood_Washington Park", 
+                                                       "neighbourhood_Lake View", "neighbourhood_Logan Square", "neighbourhood_Near West Side", "neighbourhood_East Garfield Park", "neighbourhood_South Chicago", "neighbourhood_Uptown", 
+                                                       "neighbourhood_Belmont Cragin", "neighbourhood_Oakland", "neighbourhood_Englewood", "neighbourhood_New City", "neighbourhood_Austin", "neighbourhood_Dunning"])
+        acc = st.text_input("Number of people to acommodate")
+        bedroom = st.text_input("Number of bedrooms")
+        nights = st.text_input("Number of nights stay")
+        amen = st.multiselect("Amenities required", ["gym",	"dishwasher", "kitchen", "indoor_fireplace", "iron", 
+                                                     "washer", "heating", "hair_dryer", "stove", "hot_water", "microwave", "dryer"])
+        
+        submit = st.form_submit_button("Predict")
+        
+        if submit:
+            X['longitude'] = -87.66286548720733
+            X['latitude'] = 41.89841315546652
+            X['reviews_per_month'] = -0.6654210618502802
+            X['calculated_host_listings_count'] = 1.2938878937753027
+            X['availability_365'] = 164.88737040527803
+            X['review_scores_rating'] = 0.465795193102471
+            X['number_of_reviews'] = 1.6500842530785723
+            X['maximum_nights'] = 5.6961927253466635       
+                                
+            X['accommodates'] = math.log(int(float(acc)))
+            X['bedrooms'] = math.log(int(float(bedroom)))
+            X['minimum_nights'] = math.log(int(float(nights)))
             
-            submit = st.form_submit_button("Predict")
+            input_room(X, roomtype= room)
+            input_area(X, areatype= area)
+            input_amen(X, amenities= amen)
             
-            if submit:
-                X['longitude'] = -87.66286548720733
-                X['latitude'] = 41.89841315546652
-                X['reviews_per_month'] = -0.6654210618502802
-                X['calculated_host_listings_count'] = 1.2938878937753027
-                X['availability_365'] = 164.88737040527803
-                X['review_scores_rating'] = 0.465795193102471
-                X['number_of_reviews'] = 1.6500842530785723
-                X['maximum_nights'] = 5.6961927253466635       
-                                    
-                X['accommodates'] = math.log(int(float(acc)))
-                X['bedrooms'] = math.log(int(float(bedroom)))
-                X['minimum_nights'] = math.log(int(float(nights)))
-                
-                input_room(X, roomtype= room)
-                input_area(X, areatype= area)
-                input_amen(X, amenities= amen)
-                
-                a = X.columns
-                st.text(a)
-                
-                if int(float(acc)) > 16 and int(float(acc)) <= 0:
-                    st.error("Number of accomodation must be between 1 to 16 people")
-                    
-                if int(float(bedroom)) > 12 and int(float(bedroom)) < 1:
-                    st.error("Number of beds must not exceed 12 and fall below 1")
-                
-                if int(float(nights)) <= 0:
-                    st.error("Minimum 1 night stay required")
-                    
-                val = predict_xgb(X, filename= 'model_xgb.json')
-                st.text("Predicted price in Dollars per Night")
-                st.info(val)
-                
-                
-                
-    if box1 == "Neural Network":
-        with st.form(key='user_dat'):
-            room = st.selectbox("Room type", ["Entire Home/Apartment", "Private", "Shared", "Hotel"])
-            area = st.selectbox("Select neighbourhood", ["neighbourhood_Near North Side", "neighbourhood_Albany Park", "neighbourhood_Loop", "neighbourhood_Lincoln Park", "neighbourhood_Washington Park", 
-                                                           "neighbourhood_Lake View", "neighbourhood_Logan Square", "neighbourhood_Near West Side", "neighbourhood_East Garfield Park", "neighbourhood_South Chicago", "neighbourhood_Uptown", 
-                                                           "neighbourhood_Belmont Cragin", "neighbourhood_Oakland", "neighbourhood_Englewood", "neighbourhood_New City", "neighbourhood_Austin", "neighbourhood_Dunning"])
-            acc = st.text_input("Number of people to acommodate")
-            bedroom = st.text_input("Number of bedrooms")
-            nights = st.text_input("Number of nights stay")
-            amen = st.multiselect("Amenities required", ["gym",	"dishwasher", "kitchen", "indoor_fireplace", "iron", 
-                                                         "washer", "heating", "hair_dryer", "stove", "hot_water", "microwave", "dryer"])
+            a = X.columns
+            st.text(a)
             
-            submit = st.form_submit_button("Predict")
+            if int(float(acc)) > 16 and int(float(acc)) <= 0:
+                st.error("Number of accomodation must be between 1 to 16 people")
+                
+            if int(float(bedroom)) > 12 and int(float(bedroom)) < 1:
+                st.error("Number of beds must not exceed 12 and fall below 1")
             
-            if submit:
-                X['longitude'] = -87.66286548720733
-                X['latitude'] = 41.89841315546652
-                X['reviews_per_month'] = -0.6654210618502802
-                X['calculated_host_listings_count'] = 1.2938878937753027
-                X['availability_365'] = 164.88737040527803
-                X['review_scores_rating'] = 0.465795193102471
-                X['number_of_reviews'] = 1.6500842530785722
-                X['maximum_nights'] = 5.6961927253466635       
-                                    
-                X['accommodates'] = math.log(int(float(acc)))
-                X['bedrooms'] = math.log(int(float(bedroom)))
-                X['minimum_nights'] = math.log(int(float(nights)))
+            if int(float(nights)) <= 0:
+                st.error("Minimum 1 night stay required")
                 
-                input_room(X, roomtype= room)
-                input_area(X, areatype= area)
-                input_amen(X, amenities= amen)
+            val = predict_xgb(X, filename= 'model_xgb.json')
+            st.text("Predicted price in Dollars per Night")
+            st.info(val)
                 
-                if int(float(acc)) > 16 and int(float(acc)) <= 0:
-                    st.error("Number of accomodation must be between 1 to 16 people")
-                    
-                if int(float(bedroom)) > 12 and int(float(bedroom)) < 1:
-                    st.error("Number of beds must not exceed 12 and fall below 1")
-                
-                if int(float(nights)) <= 0:
-                    st.error("Minimum 1 night stay required")
-                    
-                val = predict_NN(X, filename= 'model_NN')
-                st.text("Predicted price in Dollars per Night")
-                st.info(val)                
                 
                 
 
