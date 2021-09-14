@@ -1,7 +1,5 @@
 import math
-import numpy as np
 import xgboost as xgb
-from tensorflow import keras
 
 
 def input_room(X, roomtype):
@@ -30,12 +28,4 @@ def predict_xgb(X, filename):
     return round(y_pred, 3)
     
     
-def predict_NN(X, filename):
-    X = np.asarray(X).astype('float32')
-    model = keras.models.load_model(filename)
-    y_pred = model.predict(X)
-    y_pred = math.exp(y_pred)
-    return round(y_pred, 3)
-    
-
 
