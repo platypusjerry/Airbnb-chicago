@@ -195,11 +195,11 @@ if box == "Feature Engineering":
     """
     st.markdown(html_11, unsafe_allow_html=True)
     
-    im13 = Image.open('img/Capture3.png')
+    im13 = Image.open('img/Capture3.PNG')
     st.image(im13, caption="Document Term matrix")
     st.markdown("<br>", unsafe_allow_html=True)
     
-    im14 = Image.open('img/Capture.png')
+    im14 = Image.open('img/Capture.PNG')
     st.image(im14, caption="Sparse representation dataframe")
     st.markdown("This sparse representation form will benefit us over one-hot encoding, as we wish to see each of the terms of the features weightage on the price prediction model", unsafe_allow_html=True)
     st.markdown("Apart from Amenities, the rest of the free-text features will be dropped,as well as the redundant ones after analysisng all multi-collinearities")
@@ -235,24 +235,24 @@ if box == "Model Building":
     st.markdown("""The linear regresion model, as expected performs very poorly. Being a very biased interpolator, it does not fit well on our test dataset at all, and 
                   proceeds to give high error scores""", unsafe_allow_html=True)
                  
-    im17 = Image.open('img/regres.png')
+    im17 = Image.open('img/regres.PNG')
     st.image(im17, caption = "Linear regression scores")
     st.markdown("<br>", unsafe_allow_html=True)
     
     st.markdown("<h3><b> 2. </b2></h3>", unsafe_allow_html=True)
     st.markdown("The SVM regressor behaves similary, albeit fitting on the test data set a bit better than the linear regressor. However it too ends up being a biased model to work with", unsafe_allow_html=True)
-    im17b = Image.open('img/SVM.png')
+    im17b = Image.open('img/SVM.PNG')
     st.image(im17b, caption="SVM regression score")
     st.markdown("#")
     
     st.markdown("<h3><b> 3. </b2></h3>", unsafe_allow_html=True)
     st.markdown("An ensemble model like vanilla XGBoost, built on the functionalities of a decision tree works the best in our use case. It has an accurate validation score, and does not overfit or underfit on the given data. Let us look at an untuned XGBoost model scores", unsafe_allow_html=True)
-    im18 = Image.open('img/xgb.png')
+    im18 = Image.open('img/xgb.PNG')
     st.image(im18, caption = "XGB base model scores")
     st.markdown("#")
     
     st.markdown("Using the feature weighatages, we select the top important features to tune the hyperparameters using Gridsearch CV with a 3 fold Cross Validation. We observe an increase in the accuracy in the dest set, as well as a more suitav=ble distribution of the predicted data with accordance to the test set", unsafe_allow_html=True)
-    im19 = Image.open('img/xgb_tuned.png')
+    im19 = Image.open('img/xgb_tuned.PNG')
     st.image(im19, caption="Results after suitable tuning the hyperparameters")
     st.markdown("<br>", unsafe_allow_html=True)
     
@@ -288,11 +288,11 @@ if box == "Model Building":
     st.markdown("We shall now observe the performance of a Neural Network with L1 regularization for the given task. We will use ReLU activation function, a linear function for the output layer and a mean sqaured loss as this is a regression task.")
     st.markdown("<br>", unsafe_allow_html=True)
     
-    im23 = Image.open('img/Capture2.png')
+    im23 = Image.open('img/Capture2.PNG')
     st.image(im23, caption = "The structure of the Keras neural network built to fit our task")
     st.markdown("<br>", unsafe_allow_html=True)
     
-    im24 = Image.open('img/Capture4.png')
+    im24 = Image.open('img/Capture4.PNG')
     st.image(im24, caption="Loss and error at the completion of run epochs" )
     st.markdown("<br>", unsafe_allow_html=True)
     
