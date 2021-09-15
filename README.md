@@ -1,5 +1,5 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1AxqlqSM0mhzVcH_4FmHWof8Gsqc03vVW?usp=sharing)
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/yourGitHubName/yourRepo/yourApp/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://airbnb-pred-0413.herokuapp.com/)
 # Airbnb Chicago Analysis
 ![](bg.png)
 
