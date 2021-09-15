@@ -148,7 +148,7 @@ if box == "EDA":
     st.markdown(html_8, unsafe_allow_html=True)
     
     st.header("Descriptions and Names")
-    st.markdown("Let's start by looking at the most common words/phrases that are listed in the names of the Airbnbs.")
+    st.markdown("Let's start by looking at the most common words/phrases that are listed in the name and description of the Airbnbs.")
     
     col3, col4 = st.beta_columns(2)
     with col3:
